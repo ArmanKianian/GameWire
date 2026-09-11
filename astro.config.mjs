@@ -1,15 +1,12 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
+import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://example.github.io/gamewire",
   base: "/gamewire",
   output: "static",
-  vite: {
-    plugins: [tailwindcss()]
-  },
   integrations: [sitemap({
     filter: (page) => !page.includes("/404")
-  })]
+  }), tailwind()]
 });
