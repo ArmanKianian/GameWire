@@ -18,49 +18,34 @@ const schema = {
   "potentialAction":{"@type":"SearchAction","target":`${site}/search/?q={search_term_string}`,"query-input":"required name=search_term_string"}
 };
 ---
-
 <Layout title="GameWire — Gaming News, Updates & Stories" description="The latest gaming news, updates, releases and hardware stories across PC, PlayStation, Xbox and Nintendo.">
   <JsonLd data={schema} />
-  <section class="max-w-[1400px] mx-auto mt-[65px] mb-[95px] px-[5vw] grid lg:grid-cols-[1fr] xl:grid-cols-[1.05fr] gap-[55px] lg:gap-[55px] items-center max-xl:gap-[55px]">
+  <section class="hero">
     <div>
-      <p class="text-[0.7rem] font-black tracking-[2.5px] text-yellow-500 mb-4">⚡ THE GAMING FEED</p>
-      <h1 class="text-[clamp(3rem,6vw,6.5rem)] leading-[0.9] tracking-tight mb-[25px]">Gaming news.<br /><em class="text-gray-500 font-normal">Without the noise.</em></h1>
-      <p class="text-gray-500 max-w-[650px] leading-[1.75] text-[1.05rem] mb-7">The latest stories, updates and announcements across PC, PlayStation, Xbox and Nintendo — organized in one fast place.</p>
-      <div class="flex gap-3 mt-7">
-        <a class="inline-block bg-yellow-500 text-[#111] px-[18px] py-[13px] rounded-[8px] font-extrabold hover:brightness-[1.08]">Explore latest news</a>
-        <a class="inline-block bg-[#171717] text-[#eee] border border-[#333] px-[18px] py-[13px] rounded-[8px] font-extrabold hover:brightness-[1.08]">Browse games</a>
-      </div>
+      <p class="eyebrow">⚡ THE GAMING FEED</p>
+      <h1>Gaming news.<br /><em>Without the noise.</em></h1>
+      <p class="hero-lead">The latest stories, updates and announcements across PC, PlayStation, Xbox and Nintendo — organized in one fast place.</p>
+      <div class="hero-actions"><a class="button" href="/GameWire/news/">Explore latest news</a><a class="button ghost" href="/GameWire/games/">Browse games</a></div>
     </div>
     <ArticleCard article={hero} featured />
   </section>
 
-  <section class="max-w-[1400px] mx-auto">
-    <div class="flex justify-between items-start mb-6">
-      <div>
-        <p class="text-[0.7rem] font-black tracking-[2.5px] text-yellow-500 mb-1">LATEST</p>
-        <h2 class="text-2xl font-light tracking-tight mb-1">What's happening</h2>
-      </div>
-      <a href="/GameWire/news/" class="text-gray-400 hover:text-[#f1b86a] text-sm transition-colors">View all →</a>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">{latest.map(a => <ArticleCard article={a} />)}</div>
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">LATEST</p><h2>What's happening</h2></div><a href="/GameWire/news/">View all →</a></div>
+    <div class="news-grid">{latest.map(a => <ArticleCard article={a} />)}</div>
   </section>
 
-  <section class="max-w-[1400px] mx-auto mt-[65px]">
-    <div class="flex justify-between items-start mb-6">
-      <div>
-        <p class="text-[0.7rem] font-black tracking-[2.5px] text-yellow-500 mb-1">DISCOVER</p>
-        <h2 class="text-2xl font-light tracking-tight mb-1">Trending games</h2>
-      </div>
-      <a href="/GameWire/games/" class="text-gray-400 hover:text-[#f1b86a] text-sm transition-colors">All games →</a>
-    </div>
-    <div class="flex flex-wrap gap-6">
-      {[...new Set(popular.map(a => a.game))].map(game => <a href={`/GameWire/games/${game.toLowerCase().replaceAll(" ","-")}/`} class="bg-[#111] border border-[#222] rounded-[14px] overflow-hidden hover:-translate-y-[4px] hover:border-[#444] transition-all duration-200 px-6 py-8 flex items-center gap-3 min-w-[200px]"><span>🎮</span><strong class="text-lg font-light">{game}</strong><small class="text-gray-500 text-sm">Latest coverage →</small></a>)}
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">DISCOVER</p><h2>Trending games</h2></div><a href="/GameWire/games/">All games →</a></div>
+    <div class="game-grid">
+      {[...new Set(popular.map(a => a.game))].map(game => <a class="game-tile" href={`/GameWire/games/${game.toLowerCase().replaceAll(" ","-")}/`}><span>🎮</span><strong>{game}</strong><small>Latest coverage →</small></a>)}
     </div>
   </section>
 
-  <section class="max-w-[1400px] mx-auto mt-[80px] mb-[65px]">
-    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-x-12 gap-y-8">
-      {[1,2,3,4].map(n => <div class="flex items-start gap-5"><b class="text-4xl text-gray-600">{n < 10 ? `0${n}` : n}</b><div><strong class="text-gray-300 text-lg">Sources</strong><div class="text-gray-500 text-sm mt-1">RSS & trusted feeds</div></div></div>)}
-    </div>
+  <section class="pipeline">
+    <div><b>01</b><strong>Sources</strong><span>RSS & trusted feeds</span></div>
+    <div><b>02</b><strong>Organize</strong><span>Deduplicate & classify</span></div>
+    <div><b>03</b><strong>Build</strong><span>Static SEO pages</span></div>
+    <div><b>04</b><strong>Deploy</strong><span>GitHub Pages</span></div>
   </section>
 </Layout>

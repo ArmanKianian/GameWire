@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://example.github.io/GameWire/sitemap-index.xml
+Sitemap: https://armankianian.github.io/GameWire/sitemap-index.xml

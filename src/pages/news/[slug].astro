@@ -7,7 +7,7 @@ export function getStaticPaths() {
   return articles.map(article => ({ params: { slug: article.slug }, props: { article } }));
 }
 const { article } = Astro.props;
-const site = "https://example.github.io/gamewire";
+const site = "https://armankianian.github.io/GameWire";
 const canonical = `${site}/news/${article.slug}/`;
 const related = articles.filter(a => a.game === article.game && a.id !== article.id).slice(0, 3);
 const schema = {

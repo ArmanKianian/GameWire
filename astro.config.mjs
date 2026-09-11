@@ -1,6 +1,5 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://armankianian.github.io/GameWire",
@@ -8,5 +7,5 @@ export default defineConfig({
   output: "static",
   integrations: [sitemap({
     filter: (page) => !page.includes("/404")
-  }), tailwind()]
+  })]
 });
