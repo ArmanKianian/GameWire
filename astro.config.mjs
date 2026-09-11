@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://armankianian.github.io/GameWire",
-  base: "/GameWire",
+  base: "/gamewire",
   output: "static",
   integrations: [sitemap({
     filter: (page) => !page.includes("/404")
