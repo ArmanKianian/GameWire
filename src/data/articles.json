@@ -1,0 +1,35 @@
+[
+  {
+    "id": "gta-vi-trailer",
+    "title": "GTA VI continues to dominate the gaming conversation",
+    "description": "A sample article card showing how automatically collected gaming news could appear.",
+    "category": "Gaming",
+    "game": "GTA VI",
+    "source": "GameWire Demo",
+    "publishedAt": "2026-09-11T08:00:00Z",
+    "url": "#",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1400&q=80"
+  },
+  {
+    "id": "elden-ring",
+    "title": "Elden Ring remains one of the biggest names in modern RPGs",
+    "description": "A second sample story for the template.",
+    "category": "RPG",
+    "game": "Elden Ring",
+    "source": "GameWire Demo",
+    "publishedAt": "2026-09-11T06:30:00Z",
+    "url": "#",
+    "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1400&q=80"
+  },
+  {
+    "id": "pc-gaming",
+    "title": "PC gaming hardware keeps pushing performance forward",
+    "description": "Hardware and platform news can live alongside game coverage.",
+    "category": "Hardware",
+    "game": "PC",
+    "source": "GameWire Demo",
+    "publishedAt": "2026-09-10T20:00:00Z",
+    "url": "#",
+    "image": "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1400&q=80"
+  }
+]

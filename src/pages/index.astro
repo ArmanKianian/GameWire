@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import articles from "../data/articles.json";
+
+const sorted = [...articles].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+const hero = sorted[0];
+const latest = sorted.slice(1);
+---
+<Layout title="GameWire — Gaming News" description="The latest gaming news, updates and stories.">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">⚡ THE DAILY GAMING FEED</p>
+      <h1>Gaming news,<br /><em>without the noise.</em></h1>
+      <p class="lead">A fast, automated gaming-news portal powered by RSS feeds and GitHub Actions.</p>
+      <a class="button" href={hero.url}>Read the latest story →</a>
+    </div>
+    <img src={hero.image} alt="" />
+  </section>
+
+  <section class="section-head">
+    <div>
+      <p class="eyebrow">LATEST</p>
+      <h2>What's happening</h2>
+    </div>
+    <span>{sorted.length} stories</span>
+  </section>
+
+  <section class="grid">
+    {latest.map((article) => (
+      <article class="card">
+        <img src={article.image} alt="" loading="lazy" />
+        <div class="card-body">
+          <div class="meta"><b>{article.category}</b><span>{new Date(article.publishedAt).toLocaleDateString()}</span></div>
+          <h3>{article.title}</h3>
+          <p>{article.description}</p>
+          <a href={article.url}>Read story →</a>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <section class="pipeline">
+    <div><span>01</span><strong>RSS</strong><small>Collect stories</small></div>
+    <div><span>02</span><strong>ACTION</strong><small>Process & update</small></div>
+    <div><span>03</span><strong>ASTRO</strong><small>Build static pages</small></div>
+    <div><span>04</span><strong>PAGES</strong><small>Deploy globally</small></div>
+  </section>
+</Layout>

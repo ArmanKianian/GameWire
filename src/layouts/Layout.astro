@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+const { title = "GameWire", description = "Fast, automated gaming news." } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/gamewire/">GAME<span>WIRE</span></a>
+      <nav>
+        <a href="/gamewire/">Home</a>
+        <a href="/gamewire/category/gaming">Gaming</a>
+        <a href="/gamewire/category/rpg">RPG</a>
+        <a href="/gamewire/category/hardware">Hardware</a>
+      </nav>
+      <div class="live"><i></i> LIVE FEED</div>
+    </header>
+    <main><slot /></main>
+    <footer>GAMEWIRE · Automated gaming news template</footer>
+  </body>
+</html>
