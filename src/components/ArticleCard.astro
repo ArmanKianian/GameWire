@@ -2,13 +2,13 @@
 const { article, featured = false } = Astro.props;
 ---
 <article class:list={["article-card", { featured }]}>
-  <a href={`/gamewire/news/${article.slug}/`} class="card-image">
+  <a href={`/GameWire/news/${article.slug}/`} class="card-image">
     <img src={article.image} alt={`${article.game} — ${article.title}`} loading="lazy" width="1200" height="675" />
   </a>
   <div class="card-body">
-    <div class="meta"><a href={`/gamewire/categories/${article.category.toLowerCase().replaceAll(" ", "-")}/`}>{article.category}</a><time datetime={article.publishedAt}>{new Date(article.publishedAt).toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"})}</time></div>
-    <h2><a href={`/gamewire/news/${article.slug}/`}>{article.title}</a></h2>
+    <div class="meta"><a href={`/GameWire/categories/${article.category.toLowerCase().replaceAll(" ", "-")}/`}>{article.category}</a><time datetime={article.publishedAt}>{new Date(article.publishedAt).toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"})}</time></div>
+    <h2><a href={`/GameWire/news/${article.slug}/`}>{article.title}</a></h2>
     <p>{article.excerpt}</p>
-    <a class="read" href={`/gamewire/news/${article.slug}/`}>Read story →</a>
+    <a class="read" href={`/GameWire/news/${article.slug}/`}>Read story →</a>
   </div>
 </article>

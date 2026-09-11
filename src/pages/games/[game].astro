@@ -9,6 +9,6 @@ const {game}=Astro.props;
 const items=articles.filter(a=>a.game===game).sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt));
 const studio=items[0]?.studio ?? "Game studio";
 ---
-<Layout title={`${game} News & Updates — GameWire`} description={`The latest ${game} news, updates, announcements and coverage from GameWire.`} breadcrumbs={[{label:"Home",url:"/gamewire/"},{label:"Games",url:"/gamewire/games/"},{label:game}]}>
+<Layout title={`${game} News & Updates — GameWire`} description={`The latest ${game} news, updates, announcements and coverage from GameWire.`} breadcrumbs={[{label:"Home",url:"/GameWire/"},{label:"Games",url:"/GameWire/games/"},{label:game}]}>
   <section class="listing"><p class="eyebrow">GAME</p><h1>{game}</h1><p class="intro">{studio} · Latest news, updates and stories.</p><div class="news-grid">{items.map(a=><ArticleCard article={a}/>)}</div></section>
 </Layout>

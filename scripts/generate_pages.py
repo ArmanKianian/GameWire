@@ -59,7 +59,7 @@ def main():
         articles[-1]["publishedAt"]=published.isoformat()
         articles[-1]["updatedAt"]=(published+timedelta(hours=1)).isoformat()
         articles[-1]["source"]={"name":studio,"url":"https://example.com/"}
-        articles[-1]["image"]=f"/gamewire/images/news/{s}.svg"
+        articles[-1]["image"]=f"/GameWire/images/news/{s}.svg"
         articles[-1]["content"]=[
             f"{game} is at the center of the latest gaming discussion.",
             f"The new {topic} gives players another reason to keep an eye on {game}.",

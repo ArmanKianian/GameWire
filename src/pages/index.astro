@@ -25,20 +25,20 @@ const schema = {
       <p class="eyebrow">⚡ THE GAMING FEED</p>
       <h1>Gaming news.<br /><em>Without the noise.</em></h1>
       <p class="hero-lead">The latest stories, updates and announcements across PC, PlayStation, Xbox and Nintendo — organized in one fast place.</p>
-      <div class="hero-actions"><a class="button" href="/gamewire/news/">Explore latest news</a><a class="button ghost" href="/gamewire/games/">Browse games</a></div>
+      <div class="hero-actions"><a class="button" href="/GameWire/news/">Explore latest news</a><a class="button ghost" href="/GameWire/games/">Browse games</a></div>
     </div>
     <ArticleCard article={hero} featured />
   </section>
 
   <section class="section">
-    <div class="section-head"><div><p class="eyebrow">LATEST</p><h2>What's happening</h2></div><a href="/gamewire/news/">View all →</a></div>
+    <div class="section-head"><div><p class="eyebrow">LATEST</p><h2>What's happening</h2></div><a href="/GameWire/news/">View all →</a></div>
     <div class="news-grid">{latest.map(a => <ArticleCard article={a} />)}</div>
   </section>
 
   <section class="section">
-    <div class="section-head"><div><p class="eyebrow">DISCOVER</p><h2>Trending games</h2></div><a href="/gamewire/games/">All games →</a></div>
+    <div class="section-head"><div><p class="eyebrow">DISCOVER</p><h2>Trending games</h2></div><a href="/GameWire/games/">All games →</a></div>
     <div class="game-grid">
-      {[...new Set(popular.map(a => a.game))].map(game => <a class="game-tile" href={`/gamewire/games/${game.toLowerCase().replaceAll(" ","-")}/`}><span>🎮</span><strong>{game}</strong><small>Latest coverage →</small></a>)}
+      {[...new Set(popular.map(a => a.game))].map(game => <a class="game-tile" href={`/GameWire/games/${game.toLowerCase().replaceAll(" ","-")}/`}><span>🎮</span><strong>{game}</strong><small>Latest coverage →</small></a>)}
     </div>
   </section>
 

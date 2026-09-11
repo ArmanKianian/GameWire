@@ -25,11 +25,11 @@ const schema = {
   "keywords":article.tags.join(", ")
 };
 ---
-<Layout title={`${article.title} — GameWire`} description={article.excerpt} canonical={canonical} image={article.image} type="article" publishedAt={article.publishedAt} updatedAt={article.updatedAt} breadcrumbs={[{label:"Home",url:"/gamewire/"},{label:"News",url:"/gamewire/news/"},{label:article.title}]}>
+<Layout title={`${article.title} — GameWire`} description={article.excerpt} canonical={canonical} image={article.image} type="article" publishedAt={article.publishedAt} updatedAt={article.updatedAt} breadcrumbs={[{label:"Home",url:"/GameWire/"},{label:"News",url:"/GameWire/news/"},{label:article.title}]}>
   <JsonLd data={schema} />
   <article class="article">
     <header class="article-header">
-      <div class="meta"><a href={`/gamewire/categories/${article.category.toLowerCase().replaceAll(" ","-")}/`}>{article.category}</a><time datetime={article.publishedAt}>{new Date(article.publishedAt).toLocaleString()}</time></div>
+      <div class="meta"><a href={`/GameWire/categories/${article.category.toLowerCase().replaceAll(" ","-")}/`}>{article.category}</a><time datetime={article.publishedAt}>{new Date(article.publishedAt).toLocaleString()}</time></div>
       <h1>{article.title}</h1>
       <p class="article-excerpt">{article.excerpt}</p>
       <div class="byline"><strong>GameWire Staff</strong><span>Updated {new Date(article.updatedAt).toLocaleDateString()}</span></div>
@@ -42,9 +42,9 @@ const schema = {
       </div>
       <aside class="article-sidebar">
         <strong>Story details</strong><span>🎮 {article.game}</span><span>🏷️ {article.category}</span><span>🏢 {article.studio}</span>
-        <div class="tags">{article.tags.map(tag => <a href={`/gamewire/search/?q=${tag}`}>#{tag}</a>)}</div>
+        <div class="tags">{article.tags.map(tag => <a href={`/GameWire/search/?q=${tag}`}>#{tag}</a>)}</div>
       </aside>
     </div>
   </article>
-  {related.length > 0 && <section class="section related"><div class="section-head"><div><p class="eyebrow">MORE</p><h2>More about {article.game}</h2></div></div><div class="news-grid">{related.map(a => <div><a href={`/gamewire/news/${a.slug}/`}><h3>{a.title}</h3></a></div>)}</div></section>}
+  {related.length > 0 && <section class="section related"><div class="section-head"><div><p class="eyebrow">MORE</p><h2>More about {article.game}</h2></div></div><div class="news-grid">{related.map(a => <div><a href={`/GameWire/news/${a.slug}/`}><h3>{a.title}</h3></a></div>)}</div></section>}
 </Layout>

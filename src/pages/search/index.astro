@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import articles from "../../data/articles.json";
-const searchIndex=articles.map(a=>({title:a.title,excerpt:a.excerpt,game:a.game,category:a.category,url:`/gamewire/news/${a.slug}/`}));
+const searchIndex=articles.map(a=>({title:a.title,excerpt:a.excerpt,game:a.game,category:a.category,url:`/GameWire/news/${a.slug}/`}));
 ---
 <Layout title="Search Gaming News — GameWire" description="Search GameWire's gaming news archive.">
   <section class="listing search-page">

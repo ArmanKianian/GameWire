@@ -4,5 +4,5 @@ import articles from "../../data/articles.json";
 const counts = Object.fromEntries([...new Set(articles.map(a=>a.category))].map(c=>[c,articles.filter(a=>a.category===c).length]));
 ---
 <Layout title="Gaming News Categories — GameWire" description="Explore gaming news by genre, topic and category.">
-  <section class="listing"><p class="eyebrow">EXPLORE</p><h1>Categories</h1><div class="directory">{Object.entries(counts).map(([name,count]) => <a href={`/gamewire/categories/${name.toLowerCase().replaceAll(" ","-")}/`}><strong>{name}</strong><span>{count} stories →</span></a>)}</div></section>
+  <section class="listing"><p class="eyebrow">EXPLORE</p><h1>Categories</h1><div class="directory">{Object.entries(counts).map(([name,count]) => <a href={`/GameWire/categories/${name.toLowerCase().replaceAll(" ","-")}/`}><strong>{name}</strong><span>{count} stories →</span></a>)}</div></section>
 </Layout>

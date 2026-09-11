@@ -43,7 +43,7 @@ def main():
                 "platforms":[],"tags":["gaming-news"],"author":"GameWire Staff",
                 "publishedAt":published,"updatedAt":datetime.now(timezone.utc).isoformat(),
                 "source":{"name":feed.feed.get("title","Original source"),"url":url},
-                "sourceUrl":url,"image":"/gamewire/images/og.svg",
+                "sourceUrl":url,"image":"/GameWire/images/og.svg",
                 "content":[e.get("summary",""),"Read the original source for the complete story."]
             }
             by_url[url]=article
