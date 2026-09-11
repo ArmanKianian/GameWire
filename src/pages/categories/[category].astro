@@ -1,0 +1,13 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import articles from "../../data/articles.json";
+export function getStaticPaths() {
+  return [...new Set(articles.map(a=>a.category))].map(category=>({params:{category:category.toLowerCase().replaceAll(" ","-")},props:{category}}));
+}
+const {category}=Astro.props;
+const items=articles.filter(a=>a.category===category).sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt));
+---
+<Layout title={`${category} Gaming News — GameWire`} description={`The latest ${category} gaming news, stories, updates and announcements.`} breadcrumbs={[{label:"Home",url:"/gamewire/"},{label:"Categories",url:"/gamewire/categories/"},{label:category}]}>
+  <section class="listing"><p class="eyebrow">CATEGORY</p><h1>{category}</h1><p class="intro">Latest stories filed under {category}.</p><div class="news-grid">{items.map(a=><ArticleCard article={a}/>)}</div></section>
+</Layout>

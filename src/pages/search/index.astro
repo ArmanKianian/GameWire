@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import articles from "../../data/articles.json";
+const searchIndex=articles.map(a=>({title:a.title,excerpt:a.excerpt,game:a.game,category:a.category,url:`/gamewire/news/${a.slug}/`}));
+---
+<Layout title="Search Gaming News — GameWire" description="Search GameWire's gaming news archive.">
+  <section class="listing search-page">
+    <p class="eyebrow">SEARCH</p><h1>Find a story</h1>
+    <input id="search" class="search-input" type="search" placeholder="Search games, news, categories..." aria-label="Search gaming news" />
+    <div id="results" class="search-results"></div>
+  </section>
+  <script define:vars={{searchIndex}}>
+    const input=document.querySelector("#search"), results=document.querySelector("#results");
+    function render(q=""){
+      const term=q.trim().toLowerCase();
+      const found=term?searchIndex.filter(x=>[x.title,x.excerpt,x.game,x.category].join(" ").toLowerCase().includes(term)).slice(0,50):[];
+      results.innerHTML=found.map(x=>`<a href="${x.url}"><strong>${x.title}</strong><span>${x.game} · ${x.category}</span><p>${x.excerpt}</p></a>`).join("") || (term ? "<p>No matching stories.</p>" : "<p>Start typing to search the archive.</p>");
+    }
+    input.addEventListener("input",e=>render(e.target.value));
+    render(new URLSearchParams(location.search).get("q")||"");
+  </script>
+</Layout>

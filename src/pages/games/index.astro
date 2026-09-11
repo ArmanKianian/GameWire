@@ -1,0 +1,8 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import articles from "../../data/articles.json";
+const names=[...new Set(articles.map(a=>a.game))];
+---
+<Layout title="Games — News, Updates & Coverage | GameWire" description="Find gaming news and coverage for popular games.">
+  <section class="listing"><p class="eyebrow">GAME DATABASE</p><h1>Games</h1><p class="intro">Find all GameWire coverage organized around individual games.</p><div class="directory">{names.map(game=><a href={`/gamewire/games/${game.toLowerCase().replaceAll(" ","-")}/`}><strong>🎮 {game}</strong><span>View coverage →</span></a>)}</div></section>
+</Layout>

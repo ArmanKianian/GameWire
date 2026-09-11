@@ -1,0 +1,13 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import articles from "../../data/articles.json";
+export function getStaticPaths() {
+  return ["PC","PlayStation 5","Xbox Series X|S","Nintendo Switch 2"].map(platform=>({params:{platform:platform.toLowerCase().replaceAll(" ","-")},props:{platform}}));
+}
+const {platform}=Astro.props;
+const items=articles.filter(a=>a.platforms.includes(platform)).sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt));
+---
+<Layout title={`${platform} Gaming News — GameWire`} description={`The latest ${platform} gaming news, updates, releases and stories.`}>
+  <section class="listing"><p class="eyebrow">PLATFORM</p><h1>{platform}</h1><div class="news-grid">{items.map(a=><ArticleCard article={a}/>)}</div></section>
+</Layout>

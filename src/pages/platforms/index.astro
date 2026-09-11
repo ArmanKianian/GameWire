@@ -1,0 +1,8 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import articles from "../../data/articles.json";
+const counts=Object.fromEntries(["PC","PlayStation 5","Xbox Series X|S","Nintendo Switch 2"].map(p=>[p,articles.filter(a=>a.platforms.includes(p)).length]));
+---
+<Layout title="Gaming Platforms — PC, PlayStation, Xbox & Nintendo | GameWire" description="Gaming news organized by platform: PC, PlayStation, Xbox and Nintendo.">
+  <section class="listing"><p class="eyebrow">PLATFORMS</p><h1>Platforms</h1><div class="directory">{Object.entries(counts).map(([p,c])=><a href={`/gamewire/platforms/${p.toLowerCase().replaceAll(" ","-")}/`}><strong>{p}</strong><span>{c} stories →</span></a>)}</div></section>
+</Layout>

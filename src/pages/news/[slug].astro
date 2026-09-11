@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import JsonLd from "../../components/JsonLd.astro";
+import articles from "../../data/articles.json";
+
+export function getStaticPaths() {
+  return articles.map(article => ({ params: { slug: article.slug }, props: { article } }));
+}
+const { article } = Astro.props;
+const site = "https://example.github.io/gamewire";
+const canonical = `${site}/news/${article.slug}/`;
+const related = articles.filter(a => a.game === article.game && a.id !== article.id).slice(0, 3);
+const schema = {
+  "@context":"https://schema.org",
+  "@type":"NewsArticle",
+  "headline":article.title,
+  "description":article.excerpt,
+  "image":[`${site}${article.image}`],
+  "datePublished":article.publishedAt,
+  "dateModified":article.updatedAt,
+  "author":{"@type":"Organization","name":"GameWire","url":site},
+  "publisher":{"@type":"Organization","name":"GameWire","url":site},
+  "mainEntityOfPage":{"@type":"WebPage","@id":canonical},
+  "articleSection":article.category,
+  "keywords":article.tags.join(", ")
+};
+---
+<Layout title={`${article.title} — GameWire`} description={article.excerpt} canonical={canonical} image={article.image} type="article" publishedAt={article.publishedAt} updatedAt={article.updatedAt} breadcrumbs={[{label:"Home",url:"/gamewire/"},{label:"News",url:"/gamewire/news/"},{label:article.title}]}>
+  <JsonLd data={schema} />
+  <article class="article">
+    <header class="article-header">
+      <div class="meta"><a href={`/gamewire/categories/${article.category.toLowerCase().replaceAll(" ","-")}/`}>{article.category}</a><time datetime={article.publishedAt}>{new Date(article.publishedAt).toLocaleString()}</time></div>
+      <h1>{article.title}</h1>
+      <p class="article-excerpt">{article.excerpt}</p>
+      <div class="byline"><strong>GameWire Staff</strong><span>Updated {new Date(article.updatedAt).toLocaleDateString()}</span></div>
+    </header>
+    <img class="article-hero" src={article.image} alt={`${article.game} — ${article.title}`} width="1600" height="900" />
+    <div class="article-layout">
+      <div class="article-content">
+        {article.content.map((paragraph, i) => i === 0 ? <p class="lead-paragraph">{paragraph}</p> : <p>{paragraph}</p>)}
+        <aside class="source-box"><strong>Original source</strong><span>{article.source.name}</span><a href={article.source.url} rel="noopener noreferrer nofollow">Visit source →</a></aside>
+      </div>
+      <aside class="article-sidebar">
+        <strong>Story details</strong><span>🎮 {article.game}</span><span>🏷️ {article.category}</span><span>🏢 {article.studio}</span>
+        <div class="tags">{article.tags.map(tag => <a href={`/gamewire/search/?q=${tag}`}>#{tag}</a>)}</div>
+      </aside>
+    </div>
+  </article>
+  {related.length > 0 && <section class="section related"><div class="section-head"><div><p class="eyebrow">MORE</p><h2>More about {article.game}</h2></div></div><div class="news-grid">{related.map(a => <div><a href={`/gamewire/news/${a.slug}/`}><h3>{a.title}</h3></a></div>)}</div></section>}
+</Layout>

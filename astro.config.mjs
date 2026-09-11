@@ -1,6 +1,11 @@
 import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://example.github.io",
-  base: "/gamewire"
+  site: "https://example.github.io/gamewire",
+  base: "/gamewire",
+  output: "static",
+  integrations: [sitemap({
+    filter: (page) => !page.includes("/404")
+  })]
 });

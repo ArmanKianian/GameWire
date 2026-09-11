@@ -1,5 +1,7 @@
 {
   "name": "gamewire",
+  "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -7,6 +9,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "latest"
+    "astro": "latest",
+    "@astrojs/rss": "latest",
+    "@astrojs/sitemap": "latest"
   }
 }

@@ -1,39 +1,86 @@
-# GameWire
+# GameWire Ultimate
 
-A static, self-updating gaming news portal built with Astro + GitHub Pages + GitHub Actions.
+A static-first gaming news website template built for **SEO + scale + GitHub Pages + GitHub Actions + Astro**.
 
-## Local development
+## What is included
+
+- Home page
+- News archive
+- 180 demo article pages
+- Individual game pages
+- Category pages
+- Platform pages
+- Search
+- About / Contact / Privacy
+- 404
+- RSS feed
+- Automatic sitemap
+- Canonical URLs
+- robots directives
+- Open Graph + Twitter cards
+- `NewsArticle` JSON-LD
+- `WebSite` + `SearchAction` JSON-LD
+- Breadcrumb navigation
+- Local lightweight SVG article images
+- Responsive dark editorial design
+- Hourly GitHub Actions news-update pipeline
+- Separate deployment pipeline
+- Python bulk-content generator for load/page testing
+
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Automatic updates
+Build:
 
-Edit `scripts/update_news.py` and add RSS feeds to `FEEDS`.
+```bash
+npm run build
+```
 
-The `update-news.yml` workflow runs hourly, updates `src/data/articles.json`, commits changes, and the deployment workflow rebuilds the Astro site.
+## Generate lots of pages
 
-## Before deploying
+```bash
+python scripts/generate_pages.py --count 1000
+npm run build
+```
 
-1. Change `site` and `base` in `astro.config.mjs`.
-2. Replace the demo articles.
-3. Add your RSS sources.
-4. Configure GitHub Pages to use **GitHub Actions**.
-5. Add proper attribution/source links for every feed.
+This creates 1,000 article records and local lightweight SVG images. Astro will generate a large number of static pages, letting you test the architecture and SEO output.
 
-## Planned upgrades
+## Before production
 
-- RSS/Atom parser with `feedparser`
-- duplicate detection using canonical URLs
-- source-specific parsers
-- game/entity detection
-- article importance scoring
-- generated article pages
-- sitemap + RSS output
-- JSON-LD NewsArticle
-- Open Graph images
-- search
-- trending games
-- optional AI classification/summarization
+Change these:
+
+- `site` in `astro.config.mjs`
+- `site` in `src/layouts/Layout.astro`
+- `base` if the repository is not `/gamewire`
+- `public/robots.txt` if you add one
+- real contact/privacy information
+- real RSS sources
+- real source attribution
+- licensed/owned images
+
+## SEO philosophy
+
+The important part is not simply adding meta keywords. The template focuses on:
+
+1. Crawlable HTML
+2. Unique URLs
+3. Unique titles/descriptions
+4. Canonical URLs
+5. XML sitemap
+6. RSS discovery
+7. `NewsArticle` structured data
+8. Breadcrumb structured navigation
+9. Descriptive image alt text
+10. Fast static output
+11. Internal links between news → games → categories → platforms
+12. Mobile-friendly responsive pages
+13. No JavaScript requirement for core content
+14. Clean URL hierarchy
+
+## Important
+
+Do not publish copied articles. Use RSS for discovery/metadata and link to the original source, or publish original/licensed summaries and reporting.
